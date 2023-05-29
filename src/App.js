@@ -17,8 +17,8 @@ function App() {
 const searchWeatherHandler = () => {
     if(search !=="") {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=3c5bf9c122d9edc43e16e9080b4d3504&units=metrics`).then((res) => {
-        console.log(res)
-        // setSearch(res)
+        console.log(res.data)
+        setWeather(res.data)
       }).catch((error) => {
         console.log(error)
       })
@@ -43,7 +43,7 @@ const searchWeatherHandler = () => {
       </div>
       <div className="max-w-4xl mx-auto mt-2 p-3">
         <Search searchData={search} eventHandler={changeSearch} searchWeather={searchWeatherHandler} />
-        <Result />
+        <Result weatherData = {weather} />
       </div>
     </>
   );
