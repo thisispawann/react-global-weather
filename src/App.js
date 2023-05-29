@@ -41,7 +41,7 @@ const searchWeatherHandler = () => {
           <p>Weather App</p>
         </header>
       </div>
-      <div className="max-w-4xl mx-auto mt-2 p-3">
+      <div className="App max-w-4xl mx-auto mt-2 p-3">
         <Search searchData={search} eventHandler={changeSearch} searchWeather={searchWeatherHandler} />
         <Result weatherData = {weather} />
       </div>
