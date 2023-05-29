@@ -1,9 +1,18 @@
 import React from "react";
 
-function Result({ weatherData }) {
+function Result({ weatherData, historyData}) {
+  const historyItems = historyData.map((item, index) => {
+    return <li className="text-xl cursor-pointer" key={index}>{item}</li>
+  })
   return (
-    <div className="shadow-xl mt-5 p-2 bg-slate-900 text-white">
-      <div>
+    <div className="grid grid-cols-4 shadow-xl mt-5 p-2 bg-slate-900 text-white">
+      <div className="col-span-1 border-r-2">
+        <span className="text-center block font-bold text-base">Search History</span>
+        <ul>
+          {historyItems}
+        </ul>
+      </div>
+      <div className="col-span-3">
       {weatherData.length !== 0 ? (
         <>
           <h2 className="text-3xl text-center mt-3">{weatherData.name}</h2>
