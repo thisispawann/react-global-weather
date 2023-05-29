@@ -1,8 +1,8 @@
 import React from "react";
 
-function Result({ weatherData, historyData}) {
+function Result({ weatherData, historyData, searchHistory}) {
   const historyItems = historyData.map((item, index) => {
-    return <li className="text-xl cursor-pointer" key={index}>{item}</li>
+    return <li onClick={() => searchHistory(item)} className="text-xl cursor-pointer" key={index}>{item}</li>
   })
   return (
     <div className="grid grid-cols-4 shadow-xl mt-5 p-2 bg-slate-900 text-white">
@@ -24,7 +24,7 @@ function Result({ weatherData, historyData}) {
             <div>
               <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt="" />
             </div>
-            <div>{weatherData.weather[0].main}</div>
+            <div>{weatherData.weather[0].description}</div>
           </div>
         </>
       ) : (

@@ -26,7 +26,7 @@ function App() {
           if (history.indexOf(search) === -1) {
             setHistory([...history, search]);
           }
-          // console.log(res.data);
+          console.log(res.data);
           setWeather(res.data);
         })
         .catch((error) => {
@@ -43,6 +43,26 @@ function App() {
   //   }
   // }
 
+  const searchHistoryHandler = async (data) => {
+    await setSearch(data)
+    if (data !== "") {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${data}&appid=3c5bf9c122d9edc43e16e9080b4d3504&units=metrics`
+        )
+        .then((res) => {
+          // not repeated city and add history on response
+          if (history.indexOf(data) === -1) {
+            setHistory([...history, data]);
+          }
+          setWeather(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
   return (
     <>
       <div className="App">
@@ -57,7 +77,7 @@ function App() {
           eventHandler={changeSearch}
           searchWeather={searchWeatherHandler}
         />
-        <Result weatherData={weather} historyData={history} />
+        <Result weatherData={weather} historyData={history} searchHistory={searchHistoryHandler}/>
       </div>
     </>
   );
