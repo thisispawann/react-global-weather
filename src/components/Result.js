@@ -7,7 +7,7 @@ function Result({ weatherData, historyData, searchHistory}) {
   return (
     <div className="grid grid-cols-4 shadow-xl mt-5 p-2 bg-slate-900 text-white">
       <div className="col-span-1 border-r-2">
-        <span className="text-center block font-bold text-base">Search History</span>
+        <span className="text-center block font-bold text-base p-3">Search History</span>
         <ul>
           {historyItems}
         </ul>
